@@ -1,20 +1,23 @@
 pipeline {
     agent any 
     stages {
-        stage('Build') { 
-            steps {
-                // 
-            }
+        stage('Prepare') {
+            git url: 'https://github.com/id23cat/DMC-coreApi.git', branch: 'master'
         }
-        stage('Test') { 
-            steps {
-                // 
-            }
-        }
-        stage('Deploy') { 
-            steps {
-                // 
-            }
-        }
+        // stage('Build') { 
+        //     steps {
+        //         // 
+        //     }
+        // }
+        // stage('Test') { 
+        //     steps {
+        //         // 
+        //     }
+        // }
+        // stage('Deploy') { 
+        //     steps {
+        //         // 
+        //     }
+        // }
     }
 }
