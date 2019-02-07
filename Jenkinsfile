@@ -10,21 +10,30 @@ pipeline {
     stages {
         stage ('Initialize') {
             steps {
-                sh '''
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
-                '''
+            	task('Properties') {
+            		sh '''
+	                    echo "PATH = ${PATH}"
+	                    echo "M2_HOME = ${M2_HOME}"
+                	'''    
+            	}
             }
         }
         stage('Prepare') {
             steps {
-                git url: 'https://github.com/id23cat/DMC-coreApi.git', branch: 'master'
+            	task('checkout') {
+            	    git url: 'https://github.com/id23cat/DMC-coreApi.git', 
+            	    branch: 'master'
+//            	    ,credentialsId: 'adp-tools-cat-risk-gdw-git-token-credentials-ph2'
+            	}
+				
+				task('clean') {
+					sh './mvn clean'    
+				}
             }
-            
         }
         stage('Build') { 
             steps {
-                sh '/usr/bin/mvn -Dmaven.test.failure.ignore=true install' 
+                sh './mvn -Dmaven.test.failure.ignore=true install' 
             }
             post {
                 success {
