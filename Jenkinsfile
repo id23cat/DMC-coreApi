@@ -21,12 +21,12 @@ pipeline {
             	git url: 'https://github.com/id23cat/DMC-coreApi.git', 
             		branch: 'master'
 //            	    ,credentialsId: 'adp-tools-cat-risk-gdw-git-token-credentials-ph2'
-            	sh './mvn clean'
+            	sh './mvnw clean'
             }
         }
         stage('Build') { 
             steps {
-                sh './mvn -Dmaven.test.failure.ignore=true install' 
+                sh './mvnw -Dmaven.test.failure.ignore=true install' 
             }
             post {
                 success {
