@@ -21,7 +21,7 @@ pipeline {
             	git url: 'https://github.com/id23cat/DMC-coreApi.git', 
             		branch: 'master'
 //            	    ,credentialsId: 'token-credentials'
-            	sh './mvnw clean'
+            	sh 'mvnw clean'
             }
         }
         stage('Build') { 
