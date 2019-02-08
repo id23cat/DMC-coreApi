@@ -3,10 +3,10 @@ pipeline {
     triggers { 
         pollSCM('H/5 * * * *') 
     }
-//    tools { 
-//        maven 'Maven 3.6.0' 
-//        jdk 'jdk8' 
-//    }    
+    tools { 
+        maven 'Maven 3.5.4' 
+        jdk 'jdk8' 
+    }    
     stages {
         stage ('Initialize') {
             steps {
@@ -20,13 +20,13 @@ pipeline {
             steps {
             	git url: 'https://github.com/id23cat/DMC-coreApi.git', 
             		branch: 'master'
-//            	    ,credentialsId: 'adp-tools-cat-risk-gdw-git-token-credentials-ph2'
+//            	    ,credentialsId: 'token-credentials'
             	sh './mvnw clean'
             }
         }
         stage('Build') { 
             steps {
-                sh './mvnw -Dmaven.test.failure.ignore=true install' 
+                sh 'mvnw -Dmaven.test.failure.ignore=true install' 
             }
             post {
                 success {
