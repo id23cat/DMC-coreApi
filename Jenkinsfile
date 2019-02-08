@@ -21,12 +21,12 @@ pipeline {
             	git url: 'https://github.com/id23cat/DMC-coreApi.git', 
             		branch: 'master'
 //            	    ,credentialsId: 'token-credentials'
-            	sh 'mvnw clean'
+            	sh 'mvn clean'
             }
         }
         stage('Build') { 
             steps {
-                sh 'mvnw -Dmaven.test.failure.ignore=true install' 
+                sh 'mvn -Dmaven.test.failure.ignore=true install' 
             }
             post {
                 success {
