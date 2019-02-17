@@ -28,21 +28,21 @@ pipeline {
             steps {
                 sh 'mvn -Dmaven.test.failure.ignore=true install' 
             }
-            post {
-                success {
-                    junit 'target/surefire-reports/**/*.xml' 
-                }
-            }
+//            post {
+//                success {
+//                    junit 'target/surefire-reports/**/*.xml' 
+//                }
+//            }
         }
         // stage('Test') { 
         //     steps {
         //         // 
         //     }
         // }
-        // stage('Deploy') { 
-        //     steps {
-        //         // 
-        //     }
-        // }
+        stage('Deploy') { 
+            steps {
+                // 
+            }
+        }
     }
 }
